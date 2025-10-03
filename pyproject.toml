@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "changeusr"
+version = "0.1.0"
+description = "PyQt5 + Playwright tool for automating GitHub username changes"
+authors = [{name = "ChangeUSR Maintainers"}]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyQt5>=5.15",
+    "playwright>=1.39",
+    "gologin>=0.1",
+]
+
+[project.scripts]
+changeusr = "changeusr.gui:main"
