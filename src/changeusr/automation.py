@@ -224,11 +224,10 @@ class AutomationWorker(QObject):
         page.wait_for_load_state("networkidle", timeout=35_000)
         self._random_delay()
 
-        settings_frame = page.locator("turbo-frame#settings-frame")
-        settings_frame.wait_for(state="attached", timeout=30_000)
+        frame = page.frame_locator("turbo-frame#settings-frame")
 
         self.progress.emit('Bấm "Change username" (robust)...')
-        change_button = settings_frame.locator("button#dialog-show-rename-warning-dialog")
+        change_button = frame.locator("button#dialog-show-rename-warning-dialog")
         change_button.wait_for(state="visible", timeout=30_000)
         page.evaluate("window.scrollTo(0, 0)")
         change_button.scroll_into_view_if_needed()
